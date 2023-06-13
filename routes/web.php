@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/index', function () {
+
     return inertia('Index');
 })->name('index');
 
@@ -29,6 +30,7 @@ Route::get('/permission', function () {
 Route::get('/', function () {
     return inertia('Test');
 })->name('home');
+Route::get('/toto', [Controller::class, "index"])->name('toto.index');
 
 // Route::get('/', function () {
 //     return view('welcome');

@@ -257,7 +257,7 @@
             </li> -->
             <li :class="{ 'active-page': $page.component == 'Test' }">
                 <Link :href="route('home')"><i class="material-icons-two-tone"
-                    :class="{ 'active': $page.component == 'Test' }">home</i>Acceuil </Link>
+                    :class="{ 'active': $page.component == 'Test' }">home</i>{{ message.toto }} </Link>
             </li>
             <li :class="{ 'active-page': $page.component == 'Index' }">
                 <Link :href="route('index')"><i class="material-icons-two-tone"
@@ -282,9 +282,34 @@
 
 
 <script setup>
+import axios from 'axios';
 import { Link } from '@inertiajs/inertia-vue3';
 </script>
 
 <script>
+export default {
+    data() {
+        return {
+            message: '',
+        };
+    },
+    mounted() {
+        const my_language = localStorage.getItem('langue');
+        if (my_language != "") {
+            this.changeLanguage(my_language);
+        } else {
+            this.changeLanguage('fr'); // Change the default language here
+        }
 
+    },
+    methods: {
+
+        changeLanguage(lang) {
+            axios.get(`/api/welcome-message?lang=${lang}`).then((response) => {
+                localStorage.setItem('langue', lang);
+                this.message = response.data.message;
+            });
+        },
+    },
+};
 </script>

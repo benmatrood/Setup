@@ -6,7 +6,7 @@
                 <div class="app-sidebar">
                     <div class="logo">
                         <a href="index.html" class="logo-icon"
-                            style="background: url(../images/neptune.png) no-repeat;"><span
+                            style="background: url(assets/images/neptune.png) no-repeat;background-position: center left;background-size: 40px;"><span
                                 class="logo-text">Bloom</span></a>
                         <div class="sidebar-user-switcher user-activity-online">
                             <a href="#">
@@ -40,4 +40,26 @@
 import Footer from './Partials/Footer.vue'
 import Menu from './Partials/Menu.vue'
 import Header from './Partials/Header.vue'
+
+
+
 </script>
+<!-- <script>
+export default {
+    data() {
+        return {
+            message: [],
+        };
+    },
+    components: {
+        Header,
+    },
+
+    methods: {
+        handleMessageUpdated(updatedMessage) {
+            // Mettre à jour la propriété message dans le composant parent
+            this.message = updatedMessage;
+        },
+    },
+};
+</script> -->

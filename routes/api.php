@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+// Importez la classe Session
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+//Change locale language
+Route::get('/welcome-message', function (Request $request) {
+    // Ajoutez une variable à la session
+    Session::put('langue', $request->lang);
+    $lang = $request->query('lang', 'fr');
+    app()->setLocale($lang);
+    return response()->json(['message' => trans('messages')]);
 });

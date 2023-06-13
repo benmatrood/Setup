@@ -4,7 +4,6 @@
             <div>
                 <h1>Permision Data</h1>
             </div>
-
         </div>
         <div class="">
 
@@ -13,11 +12,13 @@
 </template>
 
 <!-- Création de Layout persistent pour faire hérité MainLayout des autres composants -->
-<script>
+<script >
 import MainLayout from '../../Layouts/MainLayout.vue'
 export default {
     layout: MainLayout
 }
 </script>
 
-<script setup></script>
+<script setup>
+
+</script>

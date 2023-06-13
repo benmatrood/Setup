@@ -1,0 +1,22 @@
+{
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "password_confirmation": "Confirmation du mot de passe",
+    "current_password": "Mot de passe actuel",
+    "date": "Date",
+    "date_equals": "Date égale à",
+    "date_format": "Format de la date",
+    "decimal": "Décimal",
+    "declined": "Décliné",
+    "declined_if": "Décliné si",
+    "different": "Différent",
+    "digits": "Nombre de chiffres",
+    "digits_between": "Nombre de chiffres entre",
+    "dimensions": "Dimensions",
+    "distinct": "Distinct",
+    "doesnt_end_with": "Ne doit pas terminer par",
+    "doesnt_start_with": "Ne doit pas commencer par",
+    "ends_with": "Ends with"
+
+}
