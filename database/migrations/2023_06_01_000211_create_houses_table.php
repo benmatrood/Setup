@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->string('address');
             $table->string('sector');
             $table->string('town');
@@ -22,7 +22,6 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('longitude');
             $table->integer('latitude');
-            $table->string('sector');
             $table->string('image')->nullable();
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();

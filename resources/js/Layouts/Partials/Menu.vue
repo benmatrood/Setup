@@ -256,23 +256,47 @@
                 <a href="#"><i class="material-icons-two-tone">access_time</i>Change Log</a>
             </li> -->
             <li :class="{ 'active-page': $page.component == 'Test' }">
-                <Link :href="route('home')"><i class="material-icons-two-tone"
-                    :class="{ 'active': $page.component == 'Test' }">home</i>{{ message.toto }} </Link>
+                <Link :href="route('admin.bureau')"><i class="material-icons-two-tone"
+                    :class="{ 'active': $page.component == 'Bureau/admin' }">home</i>{{ $t("nav.language_full") }}</Link>
             </li>
-            <li :class="{ 'active-page': $page.component == 'Index' }">
-                <Link :href="route('index')"><i class="material-icons-two-tone"
-                    :class="{ 'active': $page.component == 'Index' }">inbox</i>Message</Link>
+            <li :class="{ 'active-page': $page.component == 'Bureau/OrdersReservations/ReservationListe' }">
+                <Link :href="route('reservation.bureau')"><i class="material-icons-two-tone" :class="{
+                    'active': $page.component == 'Bureau/OrdersReservations/ReservationListe'
+                }">inbox</i>Réservations</Link>
             </li>
-            <li :class="{ 'active-page open': $page.component.startsWith('Data') }">
+            <li :class="{ 'active-page': $page.component == 'Bureau/OrdersReservations/OrderListe' }">
+                <Link :href="route('commande.bureau')"><i class="material-icons-two-tone"
+                    :class="{ 'active': $page.component == 'Index' }">inbox</i>Commandes</Link>
+            </li>
+            <li :class="{ 'open': $page.component.startsWith('Data') }">
                 <a href="#"><i class="material-icons-two-tone">analytics</i>Roles & Permissions<i
                         class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                 <ul class="sub-menu" :style="{ display: $page.component.startsWith('Data') ? 'block' : 'none' }">
                     <li>
-                        <Link :href="route('data.role')" :class="{ 'active': $page.component == 'Data/Role' }">Apex</Link>
+                        <Link :href="route('user.bureau')" :class="{ 'active': $page.component == 'Bureau/UserList' }">
+                        Liste
+                        des
+                        Utilisateurs</Link>
                     </li>
                     <li>
                         <Link :href="route('data.permission')" :class="{ 'active': $page.component == 'Data/Permission' }">
                         ChartJS</Link>
+                    </li>
+                </ul>
+            </li>
+            <li :class="{ 'open': $page.component.startsWith('Bureau/Parteners/') }">
+                <a href="#"><i class="material-icons-two-tone">analytics</i>Partenaires<i
+                        class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                <ul class="sub-menu" :style="{ display: $page.component.startsWith('Bureau/Parteners/') ? '' : 'none' }">
+                    <li>
+                        <Link :href="route('resto.bureau')"
+                            :class="{ 'active': $page.component == 'Bureau/Parteners/RestorantListe' }">
+                        Restorants</Link>
+                    </li>
+                    <li>
+                        <Link :href="route('hotel.bureau')"
+                            :class="{ 'active': $page.component == 'Bureau/Parteners/HotelListe' }">
+                        Hôtels & Réssidences</Link>
                     </li>
                 </ul>
             </li>
@@ -284,9 +308,12 @@
 <script setup>
 import axios from 'axios';
 import { Link } from '@inertiajs/inertia-vue3';
+
+const message = 'Hello World';
+
 </script>
 
-<script>
+<!-- <script>
 export default {
     data() {
         return {
@@ -305,11 +332,21 @@ export default {
     methods: {
 
         changeLanguage(lang) {
-            axios.get(`/api/welcome-message?lang=${lang}`).then((response) => {
-                localStorage.setItem('langue', lang);
-                this.message = response.data.message;
-            });
+            // axios.get(`/api/welcome-message?lang=${lang}`).then((response) => {
+            //     localStorage.setItem('langue', lang);
+            //     this.message = response.data.message;
+            // });
+            axios.get(`/update/${lang}`)
+                .then(response => {
+                    // Traitez la réponse du serveur ici
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    // Traitez les erreurs ici
+                    console.error(error);
+                });
         },
+
     },
 };
-</script>
+</script> -->

@@ -21,27 +21,29 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ], [
+            'validation.email' => 'Enter un adress email valide',
             'email.required' => 'Le champ email est obligatoire',
             'password.required' => 'Le champ mot de passe est obligatoire',
         ]);
         //verifier si l'utilisateur existe et si l'email correspond au mot de passe
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            //route par defaut
             $defaultRoute = route('home');
+            //stock la route de l'utilisateur lorsqu'il tente de ce connecter afin de le rédiriger une fois connecté
             $intendedRoute = redirect()->intended($defaultRoute)->getTargetUrl();
             return Inertia::location($intendedRoute);
         }
         return back()->withErrors([
-            'email' => "Paramètres d'authentification incorrects",
+            'error' => "Paramètres d'authentification incorrects",
         ]);
     }
 
     //logout de l'utilisateur
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        return Inertia::location("/");
     }
 
 

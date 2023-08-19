@@ -2,9 +2,9 @@
     <div>
         <h1>{{ message.toto }}</h1>
         <div class="row mb-2">
-            <!-- <div>
+            <div>
                 <input type="text" class="input_data_range form-control" name="daterange" value="" placeholder="" />
-            </div> -->
+            </div>
         </div>
 
     </div>
